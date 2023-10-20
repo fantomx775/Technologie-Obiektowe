@@ -12,9 +12,6 @@ import pl.edu.agh.logger.FileMessageSerializer;
 import pl.edu.agh.logger.Logger;
 import pl.edu.agh.school.*;
 import pl.edu.agh.school.guice.SchoolModule;
-import pl.edu.agh.school.persistence.SerializablePersistenceManager;
-
-import javax.inject.Inject;
 
 public class SchoolDemo {
 

@@ -8,6 +8,10 @@ import pl.edu.agh.logger.Logger;
 import pl.edu.agh.school.SchoolClass;
 import pl.edu.agh.school.Teacher;
 
+
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public final class SerializablePersistenceManager implements IPersistenceManager {
 
     private static final Logger log = Logger.getInstance();
@@ -16,9 +20,12 @@ public final class SerializablePersistenceManager implements IPersistenceManager
 
     private String classStorageFileName;
 
-    public SerializablePersistenceManager() {
-        teachersStorageFileName = "teachers.dat";
-        classStorageFileName = "classes.dat";
+    @Inject
+    public SerializablePersistenceManager(@Named("teachersStorageFileName") String teachersStorageFileName, @Named("classStorageFileName")String classStorageFileName) {
+        System.out.println("SerializablePersistenceManager");
+        System.out.println(this.teachersStorageFileName);
+//        teachersStorageFileName = "teachers.dat";
+//        classStorageFileName = "classes.dat";
     }
 
     @Override
@@ -35,10 +42,12 @@ public final class SerializablePersistenceManager implements IPersistenceManager
         }
     }
 
-    public void setClassStorageFileName(String classStorageFileName) {
+    @Inject
+    public void setClassStorageFileName(@Named("classStorageFileName") String classStorageFileName) {
         this.classStorageFileName = classStorageFileName;
     }
-    public void setTeachersStorageFileName(String teachersStorageFileName) {
+    @Inject
+    public void setTeachersStorageFileName(@Named("teachersStorageFileName") String teachersStorageFileName) {
         this.teachersStorageFileName = teachersStorageFileName;
     }
 
