@@ -1,7 +1,9 @@
 package util;
 
+import com.sun.jdi.request.StepRequest;
 import driver.DuckDuckGoDriver;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import model.Photo;
 import org.apache.tika.Tika;
 
@@ -44,6 +46,12 @@ public class PhotoDownloader {
                 observer.onComplete();
             })
     ;}
+
+    public Observable<Photo> searchForPhotos(List<String> searchQuery){
+        return Observable.fromIterable(searchQuery)
+                .flatMap(this::searchForPhotos)
+                .subscribeOn(Schedulers.io());
+    }
 
     private Photo getPhoto(String photoUrl) throws IOException {
         log.info("Downloading... " + photoUrl);

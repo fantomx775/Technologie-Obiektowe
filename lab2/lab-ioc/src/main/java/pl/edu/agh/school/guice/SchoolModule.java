@@ -16,12 +16,6 @@ public class SchoolModule extends AbstractModule {
     protected IPersistenceManager providePersistenceManager(SerializablePersistenceManager serializablePersistenceManager) {
          return serializablePersistenceManager;
     }
-
-//    @Override
-//    protected void configure() {
-//         bind(String.class).annotatedWith(Names.named("teachersStorageFileName")).toInstance("guice-teachers.dat");
-//         bind(String.class).annotatedWith(Names.named("classStorageFileName")).toInstance("guice-classes.dat");
-//    }
     @Provides
     @Named("teachersStorageFileName")
     protected String provideTeachersStorageFileName() {
@@ -33,6 +27,14 @@ public class SchoolModule extends AbstractModule {
     protected String provideClassStorageFileName() {
         return "classes.dat";
     }
+
+    @Provides
+    @com.google.inject.name.Named("logFilename")
+    public String provideLogFilename() {
+        return "persistence.log";
+    }
+
+
 
 
 }
