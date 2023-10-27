@@ -48,9 +48,12 @@ public class PhotoDownloader {
     ;}
 
     public Observable<Photo> searchForPhotos(List<String> searchQuery){
-        return Observable.fromIterable(searchQuery)
-                .flatMap(this::searchForPhotos)
-                .subscribeOn(Schedulers.io());
+        List<Observable<Photo>> observables = new ArrayList<>();
+        for(String query : searchQuery){
+            Observable<Photo> observable = searchForPhotos(query).subscribeOn(Schedulers.io());
+            observables.add(observable);
+        }
+        return Observable.merge(observables);
     }
 
     private Photo getPhoto(String photoUrl) throws IOException {
