@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class School {
+    @Inject
 
     private SchoolDAO schoolDAO;
 
-    @Inject
     public School(SchoolDAO schoolDAO) {
         this.schoolDAO = schoolDAO;
     }
