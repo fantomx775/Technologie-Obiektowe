@@ -48,8 +48,9 @@ public class GalleryController {
                 }
             }
         });
+        imagesListView.getSelectionModel().select(0);
         imagesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
+            if (oldValue != newValue && newValue != null) {
                 bindSelectedPhoto(newValue);
             }
         });
