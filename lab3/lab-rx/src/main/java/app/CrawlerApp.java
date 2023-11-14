@@ -1,6 +1,7 @@
 package app;
 
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -14,12 +15,11 @@ public class CrawlerApp {
 
 
     public static void main(String[] args) throws IOException {
-        PhotoCrawler photoCrawler = new PhotoCrawler();
-        photoCrawler.resetLibrary();
+//        PhotoCrawler photoCrawler = new PhotoCrawler();
+//        photoCrawler.resetLibrary();
 //        photoCrawler.downloadPhotoExamples();
 //        photoCrawler.downloadPhotosForQuery(TOPICS.get(0));
-        photoCrawler.downloadPhotosForMultipleQueries(TOPICS);
-
+//        photoCrawler.downloadPhotosForMultipleQueries(TOPICS);
 
     }
 }

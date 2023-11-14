@@ -47,9 +47,9 @@ public class PhotoDownloader {
             })
     ;}
 
-    public Observable<Photo> searchForPhotos(List<String> searchQuery){
+    public Observable<Photo> searchForPhotos(List<String> searchQueries){
         List<Observable<Photo>> observables = new ArrayList<>();
-        for(String query : searchQuery){
+        for(String query : searchQueries){
             Observable<Photo> observable = searchForPhotos(query).subscribeOn(Schedulers.io());
             observables.add(observable);
         }
