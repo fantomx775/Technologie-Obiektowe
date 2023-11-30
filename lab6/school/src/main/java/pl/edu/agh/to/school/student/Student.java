@@ -1,5 +1,9 @@
 package pl.edu.agh.to.school.student;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import pl.edu.agh.to.school.grade.Grade;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +14,7 @@ import java.util.List;
 
 @Entity
 public class Student {
+
     @Id
     @GeneratedValue
     private int id;
@@ -22,7 +27,7 @@ public class Student {
     private List<Grade> grades;
 
     public Student(String firstName, String lastName, LocalDate birthDate, String indexNumber) {
-        this.grades = new ArrayList<Grade>();
+        this.grades = new ArrayList<>();
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
@@ -30,7 +35,6 @@ public class Student {
     }
 
     public Student() {
-
     }
 
     public int getId() {
@@ -53,23 +57,11 @@ public class Student {
         return indexNumber;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public void setIndexNumber(String indexNumber) {
-        this.indexNumber = indexNumber;
-    }
-
     public void giveGrade(Grade grade) {
         grades.add(grade);
+    }
+
+    public List<Grade> getGrades() {
+        return grades;
     }
 }

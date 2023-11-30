@@ -3,6 +3,10 @@ package pl.edu.agh.to.school.student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.edu.agh.to.school.course.Course;
+import pl.edu.agh.to.school.course.CourseRepository;
+import pl.edu.agh.to.school.grade.Grade;
+import pl.edu.agh.to.school.grade.GradeRepository;
 
 import java.time.LocalDate;
 import java.util.List;
